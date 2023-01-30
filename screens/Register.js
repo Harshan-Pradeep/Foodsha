@@ -1,9 +1,57 @@
-import React from "react";
+import React, {useState} from "react";
 import { useNavigation } from "@react-navigation/native";
+import {firebase} from '../config';
 import { SafeAreaView, View, StyleSheet, Image, ScrollView, Text, TextInput, Pressable, Touchable, TouchableOpacity, RootTagContext } from "react-native";
 
 const Register=()=>{
     const navigation=useNavigation();
+    const [email, setEmail]=useState('');
+    const [password, setPassword]=useState('');
+    const [firstName, setFirstName]=useState('');
+    const [lastName, setLastName]=useState('');
+    const [number, setNumber]=useState('');
+    const [Province, setProvince]=useState('');
+    const [District, setDistrict]=useState('');
+    const [address, setAddress]=useState('');
+
+    const registerUser=async(email, password, firstName, lastName)=>{
+        await firebase.auth().createUserWithEmailAndPassword(email, password)
+        .then(()=>{
+            firebase.auth().currentUser.sendEmailVerification({
+                handleCodeInApp:true,
+                url:'https://foodsha-2aa1f.firebaseapp.com',
+            })
+            .then(()=>{
+                alert('Verficatio email sent')
+            }).catch((error)=>{
+                alert(error.message)
+            })
+            .then(()=>{
+                firebase.firestore().collection('users')
+                .doc(firebase.auth().currentUser.uid)
+                .set({
+                    "firstname":firstName,
+                    "lastname":lastName,
+                    "password":password,
+                    "email":email,
+                    "number":number,
+                    "province":Province,
+                    "district":District,
+                    "address":address,
+
+
+                })
+                   
+            })
+            .catch((error)=>{
+                alert(error.message)
+            })     
+        })
+        .catch((error=>{
+            alert(error.message)
+        }))
+
+    }
     return(
         <SafeAreaView>
             <ScrollView>
@@ -14,36 +62,35 @@ const Register=()=>{
 
                  {/*First name and last name*/ }
                 <View style={styles.view1}>
-                    <TextInput style={styles.inputStyle} placeholder="First Name" />
-                    <TextInput style={styles.inputStyle} placeholder="Last Name" />    
+                    <TextInput style={styles.inputStyle} placeholder="First Name" onChangeText={(firstName)=>setFirstName(firstName)} autoCorrect={false} />
+                    <TextInput style={styles.inputStyle} placeholder="Last Name" onChangeText={(lastName)=>setLastName(lastName)} autoCorrect={false} />    
                 </View>
 
                  {/*Contact number and email*/ }
                 <View style={styles.container}>
-                    <TextInput style={styles.contactStyle} placeholder="Contact Number" keyboardType="numeric"/>
-                    <TextInput style={styles.contactStyle} placeholder="Email Address" />
+                    <TextInput style={styles.contactStyle} placeholder="Contact Number" onChangeText={(number)=>setNumber(number)}  autoCorrect={false} keyboardType="numeric"/>
+                    <TextInput style={styles.contactStyle} placeholder="Email Address" onChangeText={(email)=>setEmail(email)} autoCapitalize="none" autoCorrect={false} keyboardType="email-address" />
                 </View>
 
                  {/*location*/ }
                 <View style={styles.view1}>
-                    <TextInput style={styles.locationStyle} placeholder="Province" />
-                    <TextInput style={styles.locationStyle} placeholder="City" />   
-                    <TextInput style={styles.locationStyle} placeholder="District" />
+                    <TextInput style={styles.locationStyle} placeholder="Province" onChangeText={(Province)=>setProvince(Province)} autoCapitalize="none" autoCorrect={false} />
+                    <TextInput style={styles.locationStyle} placeholder="District" onChangeText={(District)=>setDistrict(District)} autoCapitalize="none" autoCorrect={false} />
                 </View>
 
                 {/*Full Address*/ }
                 <View style={styles.container}>
-                    <TextInput style={styles.contactStyle} placeholder="Full Address" />
+                    <TextInput style={styles.contactStyle} placeholder="Full Address" onChangeText={(address)=>setAddress(address)} autoCapitalize="none" autoCorrect={false} />
                 </View>
 
                 {/*Password*/ }
                 <View style={styles.container}>
-                    <TextInput style={styles.contactStyle} placeholder="Password" secureTextEntry={true} />
+                    <TextInput style={styles.contactStyle} placeholder="Password" onChangeText={(password)=>setPassword(password)} autoCapitalize="none" autoCorrect={false} secureTextEntry={true} />
                 </View>
 
                 {/*Submit*/ }
                 <View style={styles.container}>
-                    <TouchableOpacity style={styles.registerButton}>
+                    <TouchableOpacity onPress={()=>{registerUser(email, password, firstName, lastName, number, District, Province, address)}} style={styles.registerButton}>
                         <Text style={{color:'#fff', fontSize:20}}>Submit</Text>
                     </TouchableOpacity>
                 </View>

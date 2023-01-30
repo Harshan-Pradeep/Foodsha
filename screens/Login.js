@@ -1,9 +1,21 @@
-import React from "react";
+
+import React, {useState} from "react";
 import { useNavigation } from "@react-navigation/native";
+import {firebase} from '../config';
 import { SafeAreaView, View, StyleSheet, Image, ScrollView, Text, TextInput, Pressable, Touchable, TouchableOpacity } from "react-native";
 
 const Login=()=>{
     const navigation=useNavigation();
+    const [email, setEmail]=useState('');
+    const [password, setPassword]=useState('');
+
+    loginUser= async(email, password)=>{
+        try{
+            await firebase.auth().signInWithEmailAndPassword(email, password)
+        }catch (error){
+            alert(error.message)
+        }
+    }
     return(
         <SafeAreaView>
             <ScrollView>
@@ -11,11 +23,11 @@ const Login=()=>{
                     <Image style={styles.default} source={require('../sources/images/logo.jpg')} resizeMode={'stretch'} />
                 </View>
                 <View style={styles.container}>
-                    <TextInput style={styles.inputStyle} placeholder="enter your email" />
-                    <TextInput style={styles.inputStyle} placeholder="enter your password"  secureTextEntry={true}/>
+                    <TextInput style={styles.inputStyle} placeholder="enter your email" onChangeText={(email)=>setEmail(email)} autoCapitalize="none" autoCorrect={false} />
+                    <TextInput style={styles.inputStyle} placeholder="enter your password" onChangeText={(password)=>setPassword(password)} autoCapitalize="none" autoCorrect={false}  secureTextEntry={true}/>
                 </View>
                 <View style={styles.container}>
-                    <TouchableOpacity style={styles.loginButton}>
+                    <TouchableOpacity onPress={()=>loginUser(email, password)} style={styles.loginButton}>
                         <Text style={{color:'#fff', fontSize:20}}>Login</Text>
                     </TouchableOpacity>
                 </View>

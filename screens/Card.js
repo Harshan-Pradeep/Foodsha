@@ -1,7 +1,23 @@
-import React from "react";
-import { View, StyleSheet, Text, ScrollView, Image } from "react-native";
+import React, { useEffect, useState } from "react";
+import { useNavigation } from "@react-navigation/native";
+import {firebase} from '../config';
+import { View, StyleSheet, Text, ScrollView, Image, TouchableOpacity } from "react-native";
 
 const Card=()=>{
+    const navigation=useNavigation();
+     const [name,setName]=useState('');
+     useEffect(()=>{
+        firebase.firestore().collection('user')
+        .doc(firebase.auth().currentUser.uid).get()
+        .then((snapshot)=>{
+            if(snapshot.exists){
+                setName(snapshot.data())
+            }
+            else{
+                console.log('user does not exist')
+            }
+        })
+     },[])
     return(
         <View>
             <ScrollView style={{marginTop:50}} horizontal={true}>
@@ -30,6 +46,9 @@ const Card=()=>{
 
                 
             </ScrollView>
+            <TouchableOpacity onPress={()=>{firebase.auth().signOut()}}>
+                <Text style={{color:'#000', fontSize:20,padding:20}} >Signout</Text>
+            </TouchableOpacity>
             
         </View>
         
