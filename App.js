@@ -7,8 +7,12 @@ import Forget from './screens/Forget';
 import AppRouter from './router/router';
 import Card from './screens/Card';
 import Splash from './splash/Splash';
+import CreateListing from './screens/CreateListing';
 import React, {useState, useEffect} from 'react';
 import {firebase} from './config';
+import CommonListing from './screens/CommonListing';
+import DonationListings from './screens/DonationListings';
+
 
 
 const Stack = createNativeStackNavigator();
@@ -40,7 +44,8 @@ const App=()=> {
   }
   return(
     <Stack.Navigator>
-      <Stack.Screen options={{headerShown:false}} name="Card" component={Card} />
+      <Stack.Screen options={{headerShown:false}} name="DonationListing" component={DonationListing} />
+      
     </Stack.Navigator>
   ); 
 }
@@ -48,7 +53,7 @@ const App=()=> {
 export default()=>{
   return(
     <NavigationContainer>
-      <App />
+      <DonationListings />
     </NavigationContainer>
   )
 }

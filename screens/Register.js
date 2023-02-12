@@ -38,8 +38,6 @@ const Register=()=>{
                     "province":Province,
                     "district":District,
                     "address":address,
-
-
                 })
                    
             })
