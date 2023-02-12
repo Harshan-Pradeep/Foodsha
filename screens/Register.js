@@ -6,12 +6,11 @@ import { SafeAreaView, View, StyleSheet, Image, ScrollView, Text, TextInput, Pre
 const Register=()=>{
     const navigation=useNavigation();
     const [email, setEmail]=useState('');
+    const [nic, setNic]=useState('');
     const [password, setPassword]=useState('');
     const [firstName, setFirstName]=useState('');
     const [lastName, setLastName]=useState('');
     const [number, setNumber]=useState('');
-    const [Province, setProvince]=useState('');
-    const [District, setDistrict]=useState('');
     const [address, setAddress]=useState('');
 
     const registerUser=async(email, password, firstName, lastName)=>{
@@ -35,8 +34,7 @@ const Register=()=>{
                     "password":password,
                     "email":email,
                     "number":number,
-                    "province":Province,
-                    "district":District,
+                    "nic":nic,
                     "address":address,
                 })
                    
@@ -68,13 +66,10 @@ const Register=()=>{
                 <View style={styles.container}>
                     <TextInput style={styles.contactStyle} placeholder="Contact Number" onChangeText={(number)=>setNumber(number)}  autoCorrect={false} keyboardType="numeric"/>
                     <TextInput style={styles.contactStyle} placeholder="Email Address" onChangeText={(email)=>setEmail(email)} autoCapitalize="none" autoCorrect={false} keyboardType="email-address" />
+                    <TextInput style={styles.contactStyle} placeholder="NIC" onChangeText={(nic)=>setEmail(nic)} autoCapitalize="none" autoCorrect={false} />
                 </View>
 
-                 {/*location*/ }
-                <View style={styles.view1}>
-                    <TextInput style={styles.locationStyle} placeholder="Province" onChangeText={(Province)=>setProvince(Province)} autoCapitalize="none" autoCorrect={false} />
-                    <TextInput style={styles.locationStyle} placeholder="District" onChangeText={(District)=>setDistrict(District)} autoCapitalize="none" autoCorrect={false} />
-                </View>
+                 
 
                 {/*Full Address*/ }
                 <View style={styles.container}>
@@ -88,7 +83,7 @@ const Register=()=>{
 
                 {/*Submit*/ }
                 <View style={styles.container}>
-                    <TouchableOpacity onPress={()=>{registerUser(email, password, firstName, lastName, number, District, Province, address)}} style={styles.registerButton}>
+                    <TouchableOpacity onPress={()=>{registerUser(email, password, firstName, lastName, number, nic, address)}} style={styles.registerButton} onPressOut={()=>{navigation.navigate("Login")}}>
                         <Text style={{color:'#fff', fontSize:20}}>Submit</Text>
                     </TouchableOpacity>
                 </View>
@@ -127,7 +122,7 @@ const styles = StyleSheet.create({
         margin: 12,
         borderWidth: 1,
         padding: 10,
-        borderColor:'#000000',
+        borderColor:'#00E7FF',
         borderRadius:20,
         textAlign:"center",
     },
@@ -137,7 +132,7 @@ const styles = StyleSheet.create({
         borderRadius:40,
         alignItems:"center",
         justifyContent:"center",
-        backgroundColor:'#19f00a',
+        backgroundColor:'#019267',
         
     },
     view1:{
@@ -149,7 +144,7 @@ const styles = StyleSheet.create({
         margin: 12,
         borderWidth: 1,
         padding: 10,
-        borderColor:'#000000',
+        borderColor:'#00E7FF',
         borderRadius:20,
         textAlign:"center",
     },

@@ -27,7 +27,6 @@ const CreateListing=()=>{
 
     //Dropdwon
     const data = [
-        {key:'1', value:'Mobiles', disabled:true},
         {key:'2', value:'Donation'},
         {key:'3', value:'Discount'},
         {key:'5', value:'Request'},
@@ -80,7 +79,7 @@ const CreateListing=()=>{
             Price:itemPrice,
             Address:itemAddress,
             Description:itemDescription,
-           // userId:user.email,
+            userId:user.email,
     
           };
           todoref
@@ -93,16 +92,10 @@ const CreateListing=()=>{
         <SafeAreaView>
             <ScrollView>
             {/*adding Image*/ }
-                <View style={styles.container}>
-                    <Text style={styles.sectionTitle}>Upload Photos</Text>
-                        <TouchableOpacity style={styles.selectButton} onPress={pickImage}>
-                        <Text style={styles.buttonText}>Pick an Image</Text>
-                        </TouchableOpacity>
+                <View style={styles.imageContainerMain}>
+                        <TouchableOpacity onPress={pickImage}><Image style={styles.addImage} source={require('../sources/images/addImage.png')} /></TouchableOpacity>
                         <View style={styles.imageContainer}>
                         {image && <Image source={{uri:image.uri}} style={{width:300, height:300}} />}
-                        <TouchableOpacity style={styles.uploadButton} >
-                            <Text style={styles.buttonStyle}>Upload Image</Text>
-                        </TouchableOpacity>
                     </View>
                 </View>
 
@@ -118,7 +111,7 @@ const CreateListing=()=>{
                 </View>
 
                 {/* Item type */}
-                <View style={styles.container}>
+                <View style={styles.SelectContainer}>
                     <SelectList
                         style={styles.selectList}
                         setSelected={(val) => setSelected(val)} 
@@ -145,10 +138,9 @@ const CreateListing=()=>{
                 
                 {/*Submit*/ }
                 <View style={styles.container}>
-                    <TouchableOpacity onPress={addField} style={styles.registerButton}>
-                        <Text style={{color:'#fff', fontSize:20}}>Submit</Text>
+                    <TouchableOpacity onPress={addField} style={styles.submitButton}>
+                        <Text style={{color:'#FFF', fontSize:20}}>Submit</Text>
                     </TouchableOpacity>
-                    <TouchableOpacity onPress={()=>{navigation.navigate("CommonListins")}}><Text>Discount </Text></TouchableOpacity>
                 </View>
 
                 
@@ -162,11 +154,18 @@ const CreateListing=()=>{
     
 }
 const styles = StyleSheet.create({
-    container: {
+    imageContainerMain: {
       flex: 1,
       alignItems:'center',
       justifyContent:'center',  
+      marginTop:50,
     },
+    container: {
+        flex: 1,
+        alignItems:'center',
+        justifyContent:'center',  
+        marginTop:10,
+      },
     default:{
         alignItems:'center',
         justifyContent:'center',
@@ -177,79 +176,53 @@ const styles = StyleSheet.create({
     },
     inputStyle:{
         flex:2,
-        margin: 12,
+        margin: 10,
         borderWidth: 1,
         padding: 10,
-        borderColor:'#000000',
+        borderColor:'#00E7FF',
         borderRadius:20,
         textAlign:"center",
+        width:330,
+        alignItems:"center",
+        justifyContent:"center",
     },
-    registerButton:{
+    submitButton:{
         width:300,
         height:50,
         borderRadius:40,
         alignItems:"center",
         justifyContent:"center",
-        backgroundColor:'#19f00a',
+        backgroundColor:'#019267',
         
     },
-    view1:{
-        flex:1,
-        flexDirection:"row",
-    },
+
     contactStyle:{
         width:330,
-        margin: 12,
+        marginBottom: 10,
         borderWidth: 1,
         padding: 10,
-        borderColor:'#000000',
+        borderColor:'#00E7FF',
         borderRadius:20,
         textAlign:"center",
-    },
-    locationStyle:{
-        flex:3,
-        margin: 12,
-        borderWidth: 1,
-        padding: 10,
-        borderColor:'#000000',
-        borderRadius:20,
-        textAlign:"center",
-
     },
     textarea:{
         width:330,
-        margin: 12,
+        marginBottom: 12,
         borderWidth: 1,
         padding: 10,
-        borderColor:'#000000',
+        borderColor:'#00E7FF',
         borderRadius:20,
         textAlign:"left",
         minHeight:150,
     },
-    selectButton:{
-        borderRadius:5,
-        width:150,
-        height:50,
-        backgroundColor:'#428af5',
-        alignItems:"center",
-        justifyContent:"center",
-    },
-    uploadButton:{
-        borderRadius:5,
-        width:150,
-        height:50,
-        backgroundColor:'#428af5',
-        alignItems:"center",
-        justifyContent:"center",
-    },
+
     buttonStyle:{
         color:'#000000',
         fontSize:18,
         fontWeight:"bold",
     },
     imageContainer:{
-        marginTop:30,
-        marginBottom:50,
+        marginBottom:10,
         alignItems:"center",
     },
     sectionTitle:{
@@ -257,6 +230,22 @@ const styles = StyleSheet.create({
         fontSize:14,
         color:'#0317fc',
         marginBottom:16,
+    },
+    addImage:{
+        width:80,
+        height:80,
+    },
+    SelectContainer:{
+        width:330,
+        justifyContent:"center",
+        flex: 1,
+        marginLeft:15,
+        justifyContent:'center',  
+        marginTop:10,
+        marginBottom:10,
+        borderColor:'00E7FF'
+
+
     },
   
   

@@ -23,12 +23,17 @@ export default CardComponents;
 
 const styles=StyleSheet.create({
     container:{
+
         margin:8,
+        backgroundColor:'#C5D7BD',
+        padding:5,
+        borderRadius:10,
 
     },
     title:{
         color:'#adaca8',
         paddingVertical:8,
+        
     },
     image:{
         borderRadius:10,
