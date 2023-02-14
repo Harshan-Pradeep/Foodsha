@@ -6,7 +6,7 @@ import {firebase} from '../config';
 import CardComponents from "../Components/CardCompo/CardComponents";
 import DonationListing from "./DonationListings";
 import { SafeAreaView, View, StyleSheet, Image, ScrollView, Text, TextInput, Pressable, Touchable, TouchableOpacity, RootTagContext, Alert, FlatList } from "react-native";
-
+import Card from "./Card";
 
 
 const CommonListing=()=>{
@@ -23,13 +23,14 @@ const CommonListing=()=>{
         querySnapshot=>{
           const foodItems=[]
           querySnapshot.forEach((doc)=>{
-            const {imageFile, Category, Price, Title} = doc.data()
+            const {imageFile, Category, Price, Title, Details} = doc.data()
             foodItems.push({
               id:doc.id,
               imageFile,
               Category, 
               Price,
               Title,
+              Details
             })
           })
           setFoodItems(foodItems);
@@ -62,7 +63,7 @@ const CommonListing=()=>{
                               numColumns={2}
                               renderItem={({item})=>(
                               <View >
-                                  <Pressable onPress={()=>{navigation.navigate('Login')}}>
+                                  <Pressable onPress={()=>{navigation.navigate('Card',{paramTitle:item.Title, paramPrice:item.Price, paramImg:item.imageFile, paramCategory:item.Category, paramDetail:item.Details})}}>
                                       <CardComponents title={ item.Title} price={item.Price} category={item.Category} image={item.imageFile} />
                                   </Pressable>
                                   

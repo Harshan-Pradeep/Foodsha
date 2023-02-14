@@ -11,21 +11,44 @@ import CommonListing from './screens/CommonListing';
 import DonationListings from './screens/DonationListings';
 import RequestListings from './screens/RequestListings';
 import DiscountListings from './screens/DiscountListings';
+import Card from './screens/Card';
+import AsyncStorage from '@react-native-async-storage/async-storage';
 
 
-
-import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
-
-
+import GetStarted from './screens/OnBoadingUi/GetStarted';
 
 
 const App=()=> {
   const Stack=createNativeStackNavigator();
 
 
-
+  const [isFirstLaunch, setIsFirstLaunch] = useState(null);
   const [initializing, setInitializing]=useState(true);
   const [user, setUser]=useState();
+
+  // useEffect(()=>{
+  //   AsyncStorage.getItem('alreadyLaunched').then(value=>{
+  //     if(value==null){
+  //       AsyncStorage.setItem('alreadyLaunched','true');
+  //     }else{
+  //       setIsFirstLaunch(false);
+  //     }
+  //   })
+  // },[]);
+
+  // if(isFirstLaunch==null){
+  //   return null;
+  // }else if (isFirstLaunch==true){
+  //   return(
+  //     < Stack.Navigator >
+  //       <Stack.Screen options={{headerShown:false}} name="GetStarted" component={GetStarted} />
+  //       <Stack.Screen options={{headerShown:false}} name="Login" component={Login} />
+  //     </Stack.Navigator>
+  //   );}else{
+  //     <Login/>
+  //   }
+  
+
 
   //Handle user state
   function onAuthStateChanged(user){
@@ -34,18 +57,41 @@ const App=()=> {
   }
 
   useEffect(()=>{
+    //check whether app is previously launched or not
+    AsyncStorage.getItem('alreadyLaunched').then(value=>{
+      if(value==null){
+        AsyncStorage.setItem('alreadyLaunched','true');
+      }else{
+        setIsFirstLaunch(false);
+      }
+    })
+
     const subscriber=firebase.auth().onAuthStateChanged(onAuthStateChanged);
     return subscriber;
   },[]);
 
   if(initializing) return null;
 
-  if(!user){
+
+  //get started screen with login
+  if(isFirstLaunch==null){
+    return null;
+  }else if (isFirstLaunch==true){
     return(
-      <Stack.Navigator>
+      < Stack.Navigator >
+        <Stack.Screen options={{headerShown:false}} name="GetStarted" component={GetStarted} />
         <Stack.Screen options={{headerShown:false}} name="Login" component={Login} />
         <Stack.Screen options={{headerShown:false}} name="Register" component={Register} />
+      </Stack.Navigator>
+    );}else{
+      <Login/>
+    }
 
+  if(!user){
+    return(
+      < Stack.Navigator >
+        <Stack.Screen options={{headerShown:false}} name="Login" component={Login} />
+        <Stack.Screen options={{headerShown:false}} name="Register" component={Register} />
       </Stack.Navigator>
     );
   }
@@ -56,6 +102,8 @@ const App=()=> {
       <Stack.Screen options={{headerShown:false}} name="RequestListings" component={RequestListings} />
       <Stack.Screen options={{headerShown:false}} name="DiscountListings" component={DiscountListings} />
       <Stack.Screen options={{headerShown:false}} name="CreateListing" component={CreateListing} />
+      <Stack.Screen options={{headerShown:true}} name="Card" component={Card} />
+
     </Stack.Navigator>
     
   ); 
