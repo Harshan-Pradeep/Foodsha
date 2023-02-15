@@ -43,28 +43,35 @@ const UserProfile=()=>{
 
 
 
+
+
   return (
     <SafeAreaView>
         <ScrollView nestedScrollEnabled={true}>
             <View style={{marginTop:50}}>
             <View style={styles.container}>
                 <Image style={styles.userProfile} source={require('../sources/images/logo.jpg')} resizeMode={'stretch'} />
+                <ScrollView nestedScrollEnabled={true}> 
+              <View>
+                <FlatList
+                        data={userDetails}
+                        renderItem={({item})=>(
+                        <View >
+                
+                            <Text style={styles.userName}  >{item.firstname} {item.lastname}</Text>
+                            <Text>Email:{item.email}</Text>
+
+                                        
+                        </View>                 
+                    )}
+                  />
+
+              </View>
+              
+            </ScrollView>
             </View>
             <View>
-            <ScrollView nestedScrollEnabled={true}> 
-              <FlatList
-                      data={userDetails}
-                      renderItem={({item})=>(
-                      <View >
-              
-                          <Text style={styles.userName}  >{item.firstname} {item.lastname}</Text>
-                          <Text>Email:{item.email}</Text>
-
-                                      
-                      </View>                 
-                  )}
-                  />
-            </ScrollView>
+            
                 
             </View>
             <View>
@@ -85,17 +92,20 @@ const styles=StyleSheet.create({
     userProfile:{
         alignItems:'center',
         justifyContent:'center',
-        width:250,
-        height:250,
+        width:60,
+        height:60,
         borderRadius:1000,
-        marginLeft:50,
+        marginLeft:20,
+       
     },
     userName:{
         color:'#13005A',
         fontWeight:"bold",
-        fontSize:35,
+        fontSize:15,
         textAlign:"center",
         textTransform:"capitalize",
+       
+
         
 
     },

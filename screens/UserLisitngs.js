@@ -45,6 +45,18 @@ const UserListings=()=>{
     loadingdata();
     
   },[])
+  const deleteFoodItem = (foodItems)=>{
+    todoRef
+      .doc(foodItems.id)
+      .delete()
+      .then(()=>{
+        alert("Deleted Successfully")
+      })
+      .catch(error=>{
+        alert(error)
+      })
+  }
+
   
 
     return(
@@ -55,19 +67,22 @@ const UserListings=()=>{
             <View style={styles.componentContainer}>
                 <View style={{flex:1, marginTop:100}}>
                   <ScrollView horizontal={true}>
-                    <FlatList
-                          data={foodItems}
-                          numColumns={1 }
-                          renderItem={({item})=>(
-                          <View >
-                              <Pressable onPress={()=>{navigation.navigate('Login')}}>
-                                  <CardComponents title={ item.Title} price={item.Price} category={item.Category} image={item.imageFile} />
-                                  <TouchableOpacity><Text >Delete</Text></TouchableOpacity>
-                              </Pressable>
-                              
-                          </View>                 
-                      )}
-                      />
+                    <View>
+                      <FlatList
+                            data={foodItems}
+                            numColumns={1 }
+                            renderItem={({item})=>(
+                            <View >
+                                <Pressable >
+                                    <CardComponents title={ item.Title} price={item.Price} category={item.Category} image={item.imageFile} />
+                                    <TouchableOpacity><Text onPress={()=>deleteFoodItem(item)} >Delete</Text></TouchableOpacity>
+                                </Pressable>
+                                
+                            </View>                 
+                        )}
+                        />
+                    </View>
+                    
 
                   </ScrollView>
                 </View>  

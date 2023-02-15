@@ -76,8 +76,9 @@ const CommonListing=()=>{
             </ScrollView>
             <View style={styles.bottomNavigation}>
               <TouchableOpacity onPress={()=>{navigation.navigate('CommonListing')}}  ><Image style={styles.bottomImage} source={require('../sources/images/home.png')}/></TouchableOpacity>
+              <TouchableOpacity onPress={()=>{navigation.navigate("CreateListing")}}><Image style={styles.bottomImagePlus} source={require('../sources/images/listing.png')}/></TouchableOpacity>
               <TouchableOpacity onPress={()=>{navigation.navigate('UserProfile')}}><Image style={styles.bottomImage} source={require('../sources/images/profile.png')}/></TouchableOpacity>
-              <TouchableOpacity onPress={()=>{navigation.navigate("CreateListing")}}><Image style={styles.bottomImage} source={require('../sources/images/listing.png')}/></TouchableOpacity>
+              
             </View>
 
 
@@ -95,19 +96,21 @@ const styles=StyleSheet.create({
         flexDirection:"row",
         marginTop:50,
         marginLeft:6,
-        marginBottom:18,
+        marginBottom:25,
         
       },
       homeButton:{
         backgroundColor:'#00909E',
         borderRadius:5,
-        width:70,
-        height:25,
-        margin:10,
+        width:103,
+        height:35,
+        margin:5,
         justifyContent:"center",
+        marginTop:40,
 
 
       },
+      
       buttonText:{
         color:'#FFF',
         textAlign:"center",
@@ -123,10 +126,11 @@ const styles=StyleSheet.create({
       },
       bottomNavigation:{
         backgroundColor:'#00909E',
-        height:80,
+        height:60,
         alignItems:"center",
         justifyContent:"center",
         flexDirection:"row",
+        marginTop:10,
         
 
      
@@ -135,5 +139,10 @@ const styles=StyleSheet.create({
         margin:45,
         maxHeight:30,
         maxWidth:30,
+      },
+      bottomImagePlus:{
+        margin:45,
+        maxHeight:40,
+        maxWidth:40,
       },
 })

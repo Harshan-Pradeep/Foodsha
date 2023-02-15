@@ -92,7 +92,7 @@ const Register=()=>{
                 {/*Login*/ }
                 <View style={styles.container}>
                     <TouchableOpacity>
-                        <Text style={{color:'#000', fontSize:20, padding:20}} onPress={()=>{navigation.navigate("Login")}}>Have you account?</Text>
+                        <Text style={{color:'#000', fontSize:15, padding:10}} onPress={()=>{navigation.navigate("Login")}}>Have you account?</Text>
                     </TouchableOpacity>
                 </View>
 
@@ -116,7 +116,7 @@ const styles = StyleSheet.create({
         width:150,
         height:150,
         borderRadius:1000,
-        marginTop:10,
+        marginTop:40,
     },
     inputStyle:{
         flex:2,
@@ -128,12 +128,13 @@ const styles = StyleSheet.create({
         textAlign:"center",
     },
     registerButton:{
-        width:300,
+        width:330,
         height:50,
         borderRadius:40,
         alignItems:"center",
         justifyContent:"center",
         backgroundColor:'#019267',
+        marginTop:10,
         
     },
     view1:{

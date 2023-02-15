@@ -105,7 +105,7 @@ const App=()=> {
       <Stack.Screen options={{headerShown:false}} name="DonationListings" component={DonationListings} />
       <Stack.Screen options={{headerShown:false}} name="RequestListings" component={RequestListings} />
       <Stack.Screen options={{headerShown:false}} name="DiscountListings" component={DiscountListings} />
-      <Stack.Screen options={{headerShown:false}} name="CreateListing" component={CreateListing} />
+      <Stack.Screen options={{headerShown:true}} name="CreateListing" component={CreateListing} />
       <Stack.Screen options={{headerShown:false}} name="Card" component={Card} />
       <Stack.Screen options={{headerShown:false}} name="UserProfile" component={UserProfile} />
       <Stack.Screen options={{headerShown:false}} name="UserListings" component={UserListings} />

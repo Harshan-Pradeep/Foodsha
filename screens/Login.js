@@ -34,7 +34,7 @@ const Login=()=>{
 
                         <View style={styles.container}>
                             <TouchableOpacity>
-                                <Text style={{color:'#000', fontSize:20,padding:20}} onPress={()=>{navigation.navigate("Register")}}>Don't have an account?</Text>
+                                <Text style={{color:'#424242', fontSize:15,padding:20}} onPress={()=>{navigation.navigate("Register")}}>Don't have an account?</Text>
                             </TouchableOpacity>
                         </View>
                     </ScrollView>
@@ -59,7 +59,8 @@ const styles = StyleSheet.create({
         width:250,
         height:250,
         borderRadius:1000,
-        marginTop:100,
+        marginTop:50,
+        marginBottom:10,
     },
     inputStyle:{
         width:300,
@@ -78,6 +79,7 @@ const styles = StyleSheet.create({
         alignItems:"center",
         justifyContent:"center",
         backgroundColor:'#019267',
+        marginTop:10,
 
     },
     
