@@ -45,7 +45,6 @@ const DonationListings=()=>{
     return(
       <SafeAreaView>
         <View style={styles.container} >
-          <TouchableOpacity style={styles.homeButton} onPress={()=>{navigation.navigate('CommonListing')}}><Text style={styles.buttonText}  >Home </Text></TouchableOpacity>
           <TouchableOpacity style={styles.homeButton} onPress={()=>{navigation.navigate('DonationListings')}}><Text style={styles.buttonText}  >Donation </Text></TouchableOpacity>
           <TouchableOpacity style={styles.homeButton} onPress={()=>{navigation.navigate('RequestListings')}}><Text style={styles.buttonText}  >Request </Text></TouchableOpacity>
           <TouchableOpacity style={styles.homeButton} onPress={()=>{navigation.navigate('DiscountListings')}}><Text style={styles.buttonText}  >Discount </Text></TouchableOpacity>
@@ -73,7 +72,7 @@ const DonationListings=()=>{
             </View>
         </ScrollView>
         <View style={styles.bottomNavigation}>
-          <TouchableOpacity><Image style={styles.bottomImage} source={require('../sources/images/home.png')}/></TouchableOpacity>
+          <TouchableOpacity onPress={()=>{navigation.navigate('CommonListing')}}><Image style={styles.bottomImage} source={require('../sources/images/home.png')}/></TouchableOpacity>
           <TouchableOpacity><Image style={styles.bottomImage} source={require('../sources/images/profile.png')}/></TouchableOpacity>
           <TouchableOpacity><Image style={styles.bottomImage} source={require('../sources/images/listing.png')}/></TouchableOpacity>
         </View>

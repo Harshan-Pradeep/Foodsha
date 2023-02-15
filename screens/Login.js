@@ -79,9 +79,6 @@ const styles = StyleSheet.create({
         justifyContent:"center",
         backgroundColor:'#019267',
 
-
-        
-        
     },
     
   });

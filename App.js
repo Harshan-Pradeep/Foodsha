@@ -12,10 +12,14 @@ import DonationListings from './screens/DonationListings';
 import RequestListings from './screens/RequestListings';
 import DiscountListings from './screens/DiscountListings';
 import Card from './screens/Card';
+import UserProfile from './screens/UserProfile';
+import UserListings from './screens/UserLisitngs';
+
 import AsyncStorage from '@react-native-async-storage/async-storage';
 
 
 import GetStarted from './screens/OnBoadingUi/GetStarted';
+
 
 
 const App=()=> {
@@ -102,7 +106,10 @@ const App=()=> {
       <Stack.Screen options={{headerShown:false}} name="RequestListings" component={RequestListings} />
       <Stack.Screen options={{headerShown:false}} name="DiscountListings" component={DiscountListings} />
       <Stack.Screen options={{headerShown:false}} name="CreateListing" component={CreateListing} />
-      <Stack.Screen options={{headerShown:true}} name="Card" component={Card} />
+      <Stack.Screen options={{headerShown:false}} name="Card" component={Card} />
+      <Stack.Screen options={{headerShown:false}} name="UserProfile" component={UserProfile} />
+      <Stack.Screen options={{headerShown:false}} name="UserListings" component={UserListings} />
+
 
     </Stack.Navigator>
     

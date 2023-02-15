@@ -6,16 +6,20 @@ import {firebase} from '../config';
 import CardComponents from "../Components/CardCompo/CardComponents";
 import { SafeAreaView, View, StyleSheet, Image, ScrollView, Text, TextInput, Pressable, Touchable, TouchableOpacity, RootTagContext, Alert, FlatList } from "react-native";
 
-const RequestListings=()=>{
+const UserListings=()=>{
     const navigation=useNavigation();
     // get data from database
+    
     const [foodItems, setFoodItems]=useState([]);
   const todoRef = firebase.firestore().collection('listings');
+
+  //get current user id
+  const user = firebase.auth().currentUser;
 
   useEffect(()=>{
     const loadingdata=async()=>{
       todoRef
-      .where('Category','==','Request')
+      .where('userId','==',`${user.email}`)
       .get()
       .then(
         querySnapshot=>{
@@ -41,27 +45,24 @@ const RequestListings=()=>{
     loadingdata();
     
   },[])
+  
 
     return(
       <SafeAreaView>
-        <View style={styles.container} >
-          <TouchableOpacity style={styles.homeButton} onPress={()=>{navigation.navigate('DonationListings')}}><Text style={styles.buttonText}  >Donation </Text></TouchableOpacity>
-          <TouchableOpacity style={styles.homeButton} onPress={()=>{navigation.navigate('RequestListings')}}><Text style={styles.buttonText}  >Request </Text></TouchableOpacity>
-          <TouchableOpacity style={styles.homeButton} onPress={()=>{navigation.navigate('DiscountListings')}}><Text style={styles.buttonText}  >Discount </Text></TouchableOpacity>      
-        </View>
-        <ScrollView nestedScrollEnabled={true} style={{flex: 1, paddingBottom: 620}}>
-            
+        
 
+        <ScrollView nestedScrollEnabled={true} style={{flex: 1, paddingBottom: 620}}>
             <View style={styles.componentContainer}>
                 <View style={{flex:1, marginTop:100}}>
                   <ScrollView horizontal={true}>
                     <FlatList
                           data={foodItems}
-                          numColumns={2}
+                          numColumns={1 }
                           renderItem={({item})=>(
                           <View >
                               <Pressable onPress={()=>{navigation.navigate('Login')}}>
                                   <CardComponents title={ item.Title} price={item.Price} category={item.Category} image={item.imageFile} />
+                                  <TouchableOpacity><Text >Delete</Text></TouchableOpacity>
                               </Pressable>
                               
                           </View>                 
@@ -72,18 +73,12 @@ const RequestListings=()=>{
                 </View>  
             </View>
         </ScrollView>
-        <View style={styles.bottomNavigation}>
-          <TouchableOpacity onPress={()=>{navigation.navigate('CommonListing')}}><Image style={styles.bottomImage} source={require('../sources/images/home.png')}/></TouchableOpacity>
-          <TouchableOpacity><Image style={styles.bottomImage} source={require('../sources/images/profile.png')}/></TouchableOpacity>
-          <TouchableOpacity><Image style={styles.bottomImage} source={require('../sources/images/listing.png')}/></TouchableOpacity>
-        </View>
-
-
+        
     </SafeAreaView>
     )
 
 }
-export default RequestListings;
+export default UserListings;
 
 const styles=StyleSheet.create({
   container: {

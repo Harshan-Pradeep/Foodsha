@@ -23,14 +23,14 @@ const CommonListing=()=>{
         querySnapshot=>{
           const foodItems=[]
           querySnapshot.forEach((doc)=>{
-            const {imageFile, Category, Price, Title, Details} = doc.data()
+            const {imageFile, Category, Price, Title, Description} = doc.data()
             foodItems.push({
               id:doc.id,
               imageFile,
               Category, 
               Price,
               Title,
-              Details
+              Description,
             })
           })
           setFoodItems(foodItems);
@@ -46,7 +46,6 @@ const CommonListing=()=>{
       
         <SafeAreaView>
           <View style={styles.container} >
-                    <TouchableOpacity style={styles.homeButton} onPress={()=>{navigation.navigate('CommonListing')}}><Text style={styles.buttonText}  >Home </Text></TouchableOpacity>
                     <TouchableOpacity style={styles.homeButton} onPress={()=>{navigation.navigate('DonationListings')}}><Text style={styles.buttonText}  >Donation </Text></TouchableOpacity>
                     <TouchableOpacity style={styles.homeButton} onPress={()=>{navigation.navigate('RequestListings')}}><Text style={styles.buttonText}  >Request </Text></TouchableOpacity>
                     <TouchableOpacity style={styles.homeButton} onPress={()=>{navigation.navigate('DiscountListings')}}><Text style={styles.buttonText}  >Discount </Text></TouchableOpacity>
@@ -63,7 +62,7 @@ const CommonListing=()=>{
                               numColumns={2}
                               renderItem={({item})=>(
                               <View >
-                                  <Pressable onPress={()=>{navigation.navigate('Card',{paramTitle:item.Title, paramPrice:item.Price, paramImg:item.imageFile, paramCategory:item.Category, paramDetail:item.Details})}}>
+                                  <Pressable onPress={()=>{navigation.navigate('Card',{paramTitle:item.Title, paramPrice:item.Price, paramImg:item.imageFile, paramCategory:item.Category, paramDetail:item.Description})}}>
                                       <CardComponents title={ item.Title} price={item.Price} category={item.Category} image={item.imageFile} />
                                   </Pressable>
                                   
@@ -76,8 +75,8 @@ const CommonListing=()=>{
                 </View>
             </ScrollView>
             <View style={styles.bottomNavigation}>
-              <TouchableOpacity><Image style={styles.bottomImage} source={require('../sources/images/home.png')}/></TouchableOpacity>
-              <TouchableOpacity><Image style={styles.bottomImage} source={require('../sources/images/profile.png')}/></TouchableOpacity>
+              <TouchableOpacity onPress={()=>{navigation.navigate('CommonListing')}}  ><Image style={styles.bottomImage} source={require('../sources/images/home.png')}/></TouchableOpacity>
+              <TouchableOpacity onPress={()=>{navigation.navigate('UserProfile')}}><Image style={styles.bottomImage} source={require('../sources/images/profile.png')}/></TouchableOpacity>
               <TouchableOpacity onPress={()=>{navigation.navigate("CreateListing")}}><Image style={styles.bottomImage} source={require('../sources/images/listing.png')}/></TouchableOpacity>
             </View>
 

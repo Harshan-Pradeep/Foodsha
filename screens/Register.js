@@ -36,6 +36,7 @@ const Register=()=>{
                     "number":number,
                     "nic":nic,
                     "address":address,
+                 
                 })
                    
             })
