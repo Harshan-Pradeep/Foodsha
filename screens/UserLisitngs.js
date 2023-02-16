@@ -65,6 +65,9 @@ const UserListings=()=>{
 
         <ScrollView nestedScrollEnabled={true} style={{flex: 1, paddingBottom: 620}}>
           <View style={styles.imageConatiner}>
+          <TouchableOpacity onPress={()=>{navigation.goBack()}}>
+            <Image style={styles.backImage} source={require('../sources/images/backArrow.png')} />
+          </TouchableOpacity>
             <Image style={styles.homeImage} source={require('../sources/images/1.png')} />
             <TouchableOpacity onPress={()=>{navigation.navigate('UserProfile')}}><Image style={styles.profileIcon} source={require('../sources/images/profile.png')}/></TouchableOpacity>
           </View>
@@ -138,16 +141,7 @@ const styles=StyleSheet.create({
     marginLeft:6,
 
   },
-  bottomNavigation:{
-    backgroundColor:'#00909E',
-    height:80,
-    alignItems:"center",
-    justifyContent:"center",
-    flexDirection:"row",
-    
 
- 
-  },
   bottomImage:{
     margin:45,
     maxHeight:30,
@@ -165,13 +159,16 @@ const styles=StyleSheet.create({
   homeImage:{
     maxHeight:100,
     maxWidth:150,
-    marginLeft:50
+    marginLeft:10,
+    marginTop:-20,
+    marginRight:10
   },
   profileIcon:{
     margin:50,
-    maxHeight:30,
-    maxWidth:30,
-    marginLeft:120
+    maxHeight:25,
+    maxWidth:25,
+    marginLeft:80,
+    marginTop:20
 
   },
   deleteButton:{
@@ -191,7 +188,7 @@ const styles=StyleSheet.create({
     alignItems:"center",
     justifyContent:"center",
     flexDirection:"row",
-    marginTop:80,
+    marginTop:60,
     
 
  
@@ -205,5 +202,11 @@ const styles=StyleSheet.create({
     margin:45,
     maxHeight:40,
     maxWidth:40,
+  },
+  backImage:{
+    width:35,
+    height:30,
+    marginLeft:40,
+    marginTop:-20,
   },
 })

@@ -58,7 +58,7 @@ const RequestListings=()=>{
 
             <View style={styles.componentContainer}>
                 <View style={{flex:1, marginTop:100}}>
-                  <ScrollView horizontal={true}>
+                  <ScrollView horizontal={true} style={{paddingBottom: 80}}>
                     <FlatList
                           data={foodItems}
                           numColumns={2}
@@ -78,7 +78,7 @@ const RequestListings=()=>{
         </ScrollView>
         <View style={styles.bottomNavigation}>
           <TouchableOpacity onPress={()=>{navigation.navigate('CommonListing')}}><Image style={styles.bottomImage} source={require('../sources/images/home.png')}/></TouchableOpacity>
-          <TouchableOpacity onPress={()=>{navigation.navigate('CreateListing')}}><Image style={styles.bottomImage} source={require('../sources/images/CreateListing.png')}/></TouchableOpacity>
+          <TouchableOpacity onPress={()=>{navigation.navigate('CreateListing')}}><Image style={styles.bottomImagePlus} source={require('../sources/images/CreateListing.png')}/></TouchableOpacity>
           <TouchableOpacity onPress={()=>{navigation.navigate('UserListings')}}><Image style={styles.bottomImage} source={require('../sources/images/listing.png')}/></TouchableOpacity>
         </View>
 
@@ -132,7 +132,7 @@ const styles=StyleSheet.create({
     alignItems:"center",
     justifyContent:"center",
     flexDirection:"row",
-    marginTop:-60,
+    marginTop:-90,
     
 
  

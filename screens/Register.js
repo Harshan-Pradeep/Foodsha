@@ -99,15 +99,16 @@ const Register=()=>{
             <ScrollView>
             {/*adding logo*/ }
                 <View style={styles.container}>
-                    <Image style={styles.default} source={require('../sources/images/logo.png')} resizeMode={'stretch'} />
+                    <Image style={styles.default} source={require('../sources/images/1.png')} resizeMode={'stretch'} />
                 </View>
 
                 <View style={styles.imageContainerMain}>
+                        
                         <TouchableOpacity onPress={pickImage}><Image style={styles.addImage} source={require('../sources/images/addImage.png')} /></TouchableOpacity>
                         <View style={styles.imageContainer}>
-                          {image && <Image source={{uri:image.uri}} style={{width:300, height:300}} />}
-                          <TouchableOpacity onPress={uploadImage}>
-                            <Text>Upload Image</Text>
+                          {image && <Image source={{uri:image.uri}} style={{width:90, height:90, borderRadius:1000}} />}
+                          <TouchableOpacity  onPress={uploadImage}>
+                            <Text style={{fontSize:18, backgroundColor:'#fe0000', color:'#FFF', borderRadius:25,padding:5,marginTop:12}} >Upload Image</Text>
                           </TouchableOpacity>
                         </View>
                 </View>
@@ -148,7 +149,7 @@ const Register=()=>{
 
                 {/*Login*/ }
                 <View style={styles.container}>
-                    <TouchableOpacity>
+                    <TouchableOpacity >
                         <Text style={{color:'#696969', fontSize:15, padding:10}} onPress={()=>{navigation.navigate("Login")}}>Have you account?</Text>
                     </TouchableOpacity>
                 </View>
@@ -170,11 +171,12 @@ const styles = StyleSheet.create({
     default:{
         alignItems:'center',
         justifyContent:'center',
-        width:500,
-        height:250,
+        width:300,
+        height:170,
         borderRadius:1000,
-        marginTop:10,
-        marginBottom:-30,
+        marginTop:-40,
+        marginBottom:-10,
+        marginLeft:-90
     },
     inputStyle:{
       
@@ -236,6 +238,7 @@ const styles = StyleSheet.create({
     addImage:{
         width:80,
         height:80,
+        marginTop:-80
         
     },
   });

@@ -8,7 +8,7 @@ const Card = ({route}) => {
     <View>
       <View style={styles.imageConatiner}>
           <TouchableOpacity onPress={()=>navigation.goBack()}>
-            <Image  style={styles.backImage} source={require('../sources/images/back.png')} />
+            <Image  style={styles.backImage} source={require('../sources/images/backArrow.png')} />
           </TouchableOpacity>
           
           <Image style={styles.homeImage} source={require('../sources/images/1.png')} />     
@@ -117,13 +117,14 @@ imageConatiner:{
 homeImage:{
   maxHeight:100,
   maxWidth:150,
-  marginRight:350
+  marginRight:350,
+  marginLeft:-110
 
 },
 backImage:{
   width:40,
   height:30,
-  marginLeft:265,
+  marginLeft:205,
 
 },
 categoryText:{

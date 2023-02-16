@@ -91,8 +91,13 @@ const CreateListing=()=>{
     return(
         <SafeAreaView >
             <View style={styles.imageConatiner}>
-            <Image style={styles.backImage} source={require('../sources/images/backArrow.png')} />
-             <Image style={styles.homeImage} source={require('../sources/images/1.png')} />
+            <TouchableOpacity onPress={()=>{navigation.goBack()}}>
+              <Image style={styles.backImage} source={require('../sources/images/backArrow.png')} />
+              
+            </TouchableOpacity>
+            <Image style={styles.homeImage} source={require('../sources/images/1.png')} />
+            
+             
              
             </View>
             <ScrollView  >
@@ -100,7 +105,7 @@ const CreateListing=()=>{
                 <View style={styles.imageContainerMain}>
                         <TouchableOpacity onPress={pickImage}><Image style={styles.addImage} source={require('../sources/images/addImage.png')} /></TouchableOpacity>
                         <View style={styles.imageContainer}>
-                          {image && <Image source={{uri:image.uri}} style={{width:300, height:300}} />}
+                          {image && <Image source={{uri:image.uri}} style={{width:150, height:150, borderRadius:25}} />}
                         </View>
                 </View>
 
@@ -253,6 +258,7 @@ const styles = StyleSheet.create({
     addImage:{
         width:80,
         height:80,
+        marginTop:-55
     },
     SelectContainer:{
         width:330,
@@ -274,17 +280,22 @@ const styles = StyleSheet.create({
         marginTop:80,
         marginBottom:5,
         marginLeft:-250,
+        paddingBottom:20,
     
       },
       homeImage:{
         maxHeight:100,
         maxWidth:150,
-        marginLeft:50
+        marginRight:450,
+        marginTop:-30,
+      
+        
       },
       backImage:{
-        width:40,
+        width:35,
         height:30,
-        marginLeft:150,
+        marginLeft:560,
+        marginTop:-30,
       },
   
   

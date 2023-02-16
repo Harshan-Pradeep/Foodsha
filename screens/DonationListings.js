@@ -129,7 +129,7 @@ const styles=StyleSheet.create({
     alignItems:"center",
     justifyContent:"center",
     flexDirection:"row",
-    marginTop:-60,
+    marginTop:-90,
     
 
  

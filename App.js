@@ -14,11 +14,9 @@ import DiscountListings from './screens/DiscountListings';
 import Card from './screens/Card';
 import UserProfile from './screens/UserProfile';
 import UserListings from './screens/UserLisitngs';
-
 import AsyncStorage from '@react-native-async-storage/async-storage';
-
-
 import GetStarted from './screens/OnBoadingUi/GetStarted';
+
 
 const theme={
   colors:{
@@ -83,29 +81,29 @@ const App=()=> {
 
 
   //get started screen with login
-  if(isFirstLaunch==null){
+ /* if(isFirstLaunch==null){
     return null;
   }else if (isFirstLaunch==true){
+    return(
+      < Stack.Navigator >
+        
+
+      </Stack.Navigator>
+    );}else{
+      <Login/>
+    }
+*/
+  if(!user){
     return(
       < Stack.Navigator >
         <Stack.Screen options={{headerShown:false}} name="GetStarted" component={GetStarted} />
         <Stack.Screen options={{headerShown:false}} name="Login" component={Login} />
         <Stack.Screen options={{headerShown:false}} name="Register" component={Register} />
       </Stack.Navigator>
-    );}else{
-      <Login/>
-    }
-
-  if(!user){
-    return(
-      < Stack.Navigator >
-        <Stack.Screen options={{headerShown:false}} name="Login" component={Login} />
-        <Stack.Screen options={{headerShown:false}} name="Register" component={Register} />
-      </Stack.Navigator>
     );
   }
   return(
-    <Stack.Navigator>
+    <Stack.Navigator >
       <Stack.Screen options={{headerShown:false}} name="CommonListing" component={CommonListing} />
       <Stack.Screen options={{headerShown:false}} name="DonationListings" component={DonationListings} />
       <Stack.Screen options={{headerShown:false}} name="RequestListings" component={RequestListings} />
@@ -114,6 +112,7 @@ const App=()=> {
       <Stack.Screen options={{headerShown:false}} name="Card" component={Card} />
       <Stack.Screen options={{headerShown:false}} name="UserProfile" component={UserProfile} />
       <Stack.Screen options={{headerShown:false}} name="UserListings" component={UserListings} />
+      
 
 
     </Stack.Navigator>
@@ -124,7 +123,7 @@ const App=()=> {
 export default()=>{
   return(
     <NavigationContainer theme={theme} >
-      <App />
+      <App  />
     </NavigationContainer>
   )
 }

@@ -9,6 +9,7 @@ import { SafeAreaView, View, StyleSheet, Image, ScrollView, Text, TextInput, Pre
 import Card from "./Card";
 
 
+
 const CommonListing=()=>{
     const navigation=useNavigation();
     
@@ -19,10 +20,12 @@ const CommonListing=()=>{
   useEffect(()=>{
     const loadingdata=async()=>{
       todoRef
+      
       .onSnapshot(
         querySnapshot=>{
           const foodItems=[]
           querySnapshot.forEach((doc)=>{
+            
             const {imageFile, Category, Price, Title, Description, Address , Contact} = doc.data()
             foodItems.push({
               id:doc.id,
@@ -138,7 +141,7 @@ const styles=StyleSheet.create({
         alignItems:"center",
         justifyContent:"center",
         flexDirection:"row",
-        marginTop:-60,
+        marginTop:-90,
         
 
      
@@ -171,9 +174,9 @@ const styles=StyleSheet.create({
       },
       profileIcon:{
         margin:50,
-        maxHeight:30,
-        maxWidth:30,
-        marginLeft:120
+        maxHeight:25,
+        maxWidth:25,
+        marginLeft:155
 
       },
 })

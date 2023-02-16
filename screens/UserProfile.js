@@ -52,7 +52,7 @@ const UserProfile=()=>{
     <SafeAreaView>
       <View style={styles.imageConatiner}>
           <TouchableOpacity onPress={()=>navigation.goBack()}>
-            <Image  style={styles.backImage} source={require('../sources/images/back.png')} />
+            <Image  style={styles.backImage} source={require('../sources/images/backArrow.png')} />
           </TouchableOpacity>
           
           <Image style={styles.homeImage} source={require('../sources/images/1.png')} />     
@@ -119,6 +119,7 @@ const styles=StyleSheet.create({
         height:150,
         borderRadius:1000,
         marginLeft:100,
+        marginTop:10
 
        
     },
@@ -130,7 +131,7 @@ const styles=StyleSheet.create({
         textTransform:"capitalize",
         marginTop:20,
         marginBottom:50,
-        marginLeft:40
+        marginLeft:80
         
        
 
@@ -160,13 +161,14 @@ const styles=StyleSheet.create({
     homeImage:{
       maxHeight:100,
       maxWidth:150,
-      marginRight:350
+      marginRight:350,
+      marginLeft:-110
     
     },
     backImage:{
-      width:20,
-      height:10,
-      marginLeft:265,
+      width:35,
+      height:30,
+      marginLeft:205,
     },
     item:{
       fontSize:18,
