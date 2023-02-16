@@ -11,7 +11,7 @@ const  CardComponents =({title, price, category, image})=>{
             <Image style={styles.image} source={image} /> 
             <Text style={styles.title}>{title}</Text>
             <Text style={styles.category}>{category}</Text>
-            <Text style={styles.price}>{price}</Text>
+            <Text style={styles.price}>Rs. {price}</Text>
             
         </View>
     
@@ -25,30 +25,36 @@ const styles=StyleSheet.create({
     container:{
 
         margin:8,
-        backgroundColor:'#C5D7BD',
+        backgroundColor:'#FFF',
         padding:5,
-        borderRadius:10,
+        borderRadius:40,
+        elevation:5,
 
     },
     title:{
-        color:'#adaca8',
+        color:'#000',
         paddingVertical:8,
+        textAlign:'center',
+        fontWeight:'bold',
         
     },
     image:{
-        borderRadius:10,
+        borderRadius:40,
         width:(width-64) /2,
-        height:190,
+        height:130,
+   
 
 
     },
     price:{
         color:'#000',
         paddingBottom:8,
+        textAlign:'center',
     },
     category:{
         color:'#000',
         paddingBottom:8,
+        textAlign:'center',
     },
 
 })

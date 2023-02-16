@@ -89,14 +89,19 @@ const CreateListing=()=>{
 
 
     return(
-        <SafeAreaView>
-            <ScrollView>
+        <SafeAreaView >
+            <View style={styles.imageConatiner}>
+            <Image style={styles.backImage} source={require('../sources/images/backArrow.png')} />
+             <Image style={styles.homeImage} source={require('../sources/images/1.png')} />
+             
+            </View>
+            <ScrollView  >
             {/*adding Image*/ }
                 <View style={styles.imageContainerMain}>
                         <TouchableOpacity onPress={pickImage}><Image style={styles.addImage} source={require('../sources/images/addImage.png')} /></TouchableOpacity>
                         <View style={styles.imageContainer}>
-                        {image && <Image source={{uri:image.uri}} style={{width:300, height:300}} />}
-                    </View>
+                          {image && <Image source={{uri:image.uri}} style={{width:300, height:300}} />}
+                        </View>
                 </View>
 
                  {/*title*/ }
@@ -159,12 +164,14 @@ const styles = StyleSheet.create({
       alignItems:'center',
       justifyContent:'center',  
       marginTop:50,
+      
     },
     container: {
         flex: 1,
         alignItems:'center',
         justifyContent:'center',  
         marginTop:10,
+        
       },
     default:{
         alignItems:'center',
@@ -177,14 +184,16 @@ const styles = StyleSheet.create({
     inputStyle:{
         flex:2,
         margin: 10,
-        borderWidth: 1,
-        padding: 10,
-        borderColor:'#00E7FF',
+        //borderWidth: 1,
+        padding: 5,
+        //borderColor:'#fe0000',
         borderRadius:20,
         textAlign:"center",
         width:330,
         alignItems:"center",
         justifyContent:"center",
+        elevation:5,
+        backgroundColor:'#FFF'
     },
     submitButton:{
         width:300,
@@ -192,34 +201,44 @@ const styles = StyleSheet.create({
         borderRadius:40,
         alignItems:"center",
         justifyContent:"center",
-        backgroundColor:'#019267',
+        backgroundColor:'#fe0000',
+        elevation:5,
+        marginBottom:120,
+        
+      
         
     },
 
     contactStyle:{
         width:330,
-        marginBottom: 10,
-        borderWidth: 1,
-        padding: 10,
-        borderColor:'#00E7FF',
+        marginBottom: 12,
+        //borderWidth: 1,
+        padding: 5,
+        //borderColor:'#fe0000',
         borderRadius:20,
         textAlign:"center",
+        elevation:5,
+        backgroundColor:'#FFF'
     },
     textarea:{
         width:330,
         marginBottom: 12,
-        borderWidth: 1,
+        //borderWidth: 1,
         padding: 10,
-        borderColor:'#00E7FF',
+        //borderColor:'#fe0000',
         borderRadius:20,
         textAlign:"left",
         minHeight:150,
+        elevation:5,
+        backgroundColor:'#FFF',
     },
 
     buttonStyle:{
         color:'#000000',
         fontSize:18,
         fontWeight:"bold",
+       
+        
     },
     imageContainer:{
         marginBottom:10,
@@ -247,6 +266,26 @@ const styles = StyleSheet.create({
 
 
     },
+    imageConatiner:{
+        flex: 1,
+        alignItems:'center',
+        justifyContent:'center',  
+        flexDirection:"row",
+        marginTop:80,
+        marginBottom:5,
+        marginLeft:-250,
+    
+      },
+      homeImage:{
+        maxHeight:100,
+        maxWidth:150,
+        marginLeft:50
+      },
+      backImage:{
+        width:40,
+        height:30,
+        marginLeft:150,
+      },
   
   
   });

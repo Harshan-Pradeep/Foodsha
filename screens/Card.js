@@ -1,22 +1,59 @@
 import { StyleSheet, Text, View, Image, TouchableOpacity } from 'react-native'
 import React from 'react'
+import { useNavigation } from '@react-navigation/native'
 
 const Card = ({route}) => {
+  const navigation=useNavigation();
   return (
     <View>
-      <View style={styles.cardBody}>
+      <View style={styles.imageConatiner}>
+          <TouchableOpacity onPress={()=>navigation.goBack()}>
+            <Image  style={styles.backImage} source={require('../sources/images/back.png')} />
+          </TouchableOpacity>
+          
+          <Image style={styles.homeImage} source={require('../sources/images/1.png')} />     
+        </View>
+        <View>
+          <Text style={styles.categoryText}>{route.params.paramCategory}</Text>
+        </View>
+      
+      <View style={styles.cardBodyImage}>
         <Image source={route.params.paramImg}   style={styles.cardImageStyle}/>
+      </View>
+      <View style={styles.cardBodyContent}>
 
-        <Text>{route.params.paramTitle}</Text>
-        <Text>{route.params.paramPrice}</Text>
-        <Text>{route.params.paramCategory}</Text>
-        <Text>{route.params.paramDetail}</Text>
+        <View style={{flexDirection:'row'}}>
+          <Text style={styles.item}>Food Name</Text>
+          <Text style={{ fontSize:18 , marginLeft:28, marginBottom:10, marginRight:90 }}>{route.params.paramTitle}</Text>
+        </View>
+
+        <View style={{flexDirection:'row'}}>
+          <Text style={styles.item}>Category</Text>
+          <Text style={{ fontSize:18 , marginLeft:50, marginBottom:10, marginRight:90}}>{route.params.paramCategory}</Text>
+        </View>
+
+        <View style={{flexDirection:'row'}}>
+          <Text style={styles.item}>Price</Text>
+          <Text style={{ fontSize:18 , marginLeft:79, marginBottom:10, marginRight:90}}>{route.params.paramPrice}</Text>
+        </View>
+         
+        <View style={{flexDirection:'row'}}>
+          <Text style={styles.item}>Description</Text>
+          <Text style={{ fontSize:18 , marginLeft:30, marginBottom:10, marginRight:90}}>{route.params.paramDetail}</Text>
+        </View>
+
+        <View style={{flexDirection:'row'}}>
+          <Text style={styles.item}>Contact</Text>
+          <Text style={{ fontSize:18 , marginLeft:56, marginBottom:10, marginRight:90}}>{route.params.paramContact}</Text>
+        </View>
+
+        <View style={{flexDirection:'row'}}>
+          <Text style={styles.item}>Address</Text>
+          <Text style={{ fontSize:18 , marginLeft:56, marginBottom:10, marginRight:90}}>{route.params.paramAddress}</Text>
+        </View>
+
       </View>
-      <View style={styles.container}>
-        <TouchableOpacity  style={styles.contactButton}>
-            <Text style={{color:'#fff', fontSize:20}}>Contact</Text>
-        </TouchableOpacity>
-      </View>
+
   </View>
   )
 }
@@ -24,22 +61,28 @@ const Card = ({route}) => {
 export default Card
 
 const styles = StyleSheet.create({
-  cardBody:{
+  cardBodyImage:{
     marginTop:50,
     justifyContent:'center',
     alignItems:'center',
     margin:10,
-    backgroundColor:'#E5D1FA',
-    padding:5,
-    borderRadius:10,
+    marginLeft:10,
+    elevation:5,
+    borderRadius:25,
+    
+    
+    
+    
     
   },
   cardImageStyle:
    {
     margin:10,
-    width:330, 
-    height:280,
-    borderRadius:10,
+    width:340,
+    height:231,
+    borderRadius:25,
+    marginTop:-40,
+
 
   },
   contactButton:{
@@ -53,6 +96,53 @@ const styles = StyleSheet.create({
 
     
     
+},
+cardBodyContent:{
+  marginTop:20,
+  justifyContent:'center',
+  margin:10,
+  padding:5,
+  borderRadius:10,
+  
+},
+imageConatiner:{
+  flex: 1,
+  alignItems:'center',
+  justifyContent:'center',  
+  flexDirection:"row",
+  marginTop:50,
+  marginBottom:20
+
+},
+homeImage:{
+  maxHeight:100,
+  maxWidth:150,
+  marginRight:350
+
+},
+backImage:{
+  width:40,
+  height:30,
+  marginLeft:265,
+
+},
+categoryText:{
+  fontWeight:'600',
+  marginTop:10,
+  fontSize:25,
+  marginLeft:12,
+
+
+},
+itemText:{
+  fontSize:18,
+
+
+},
+item:{
+  fontSize:18,
+  marginLeft:3,
+
 },
 
 

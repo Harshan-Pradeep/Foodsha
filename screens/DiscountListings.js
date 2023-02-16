@@ -45,6 +45,10 @@ const DiscountListings=()=>{
 
     return(
       <SafeAreaView>
+        <View style={styles.imageConatiner}>
+          <Image style={styles.homeImage} source={require('../sources/images/1.png')} />
+          <TouchableOpacity onPress={()=>{navigation.navigate('UserProfile')}}><Image style={styles.profileIcon} source={require('../sources/images/profile.png')}/></TouchableOpacity>
+        </View>
         <View style={styles.container} >
           <TouchableOpacity style={styles.homeButton} onPress={()=>{navigation.navigate('DonationListings')}}><Text style={styles.buttonText}  >Donation </Text></TouchableOpacity>
           <TouchableOpacity style={styles.homeButton} onPress={()=>{navigation.navigate('RequestListings')}}><Text style={styles.buttonText}  >Request </Text></TouchableOpacity>
@@ -75,8 +79,8 @@ const DiscountListings=()=>{
       </ScrollView>
       <View style={styles.bottomNavigation}>
         <TouchableOpacity onPress={()=>{navigation.navigate('CommonListing')}}><Image style={styles.bottomImage} source={require('../sources/images/home.png')}/></TouchableOpacity>
-        <TouchableOpacity><Image style={styles.bottomImage} source={require('../sources/images/profile.png')}/></TouchableOpacity>
-        <TouchableOpacity><Image style={styles.bottomImage} source={require('../sources/images/listing.png')}/></TouchableOpacity>
+        <TouchableOpacity onPress={()=>{navigation.navigate('CreateListing')}}><Image style={styles.bottomImage} source={require('../sources/images/CreateListing.png')}/></TouchableOpacity>
+        <TouchableOpacity onPress={()=>{navigation.navigate('CommonListing')}}><Image style={styles.bottomImage} source={require('../sources/images/listing.png')}/></TouchableOpacity>
       </View>
 
 
@@ -94,19 +98,22 @@ const styles=StyleSheet.create({
     flexDirection:"row",
     marginTop:50,
     marginLeft:6,
-    marginBottom:18,
+    marginBottom:25,
     
   },
   homeButton:{
-    backgroundColor:'#00909E',
-    borderRadius:5,
-    width:70,
-    height:25,
-    margin:10,
+    backgroundColor:'#fe0000',
+    borderRadius:25,
+    width:103,
+    height:35,
+    margin:5,
     justifyContent:"center",
+    marginTop:20,
+    marginBottom:25,
 
 
   },
+  
   buttonText:{
     color:'#FFF',
     textAlign:"center",
@@ -121,11 +128,12 @@ const styles=StyleSheet.create({
 
   },
   bottomNavigation:{
-    backgroundColor:'#00909E',
-    height:80,
+    backgroundColor:'#fe0000',
+    height:60,
     alignItems:"center",
     justifyContent:"center",
     flexDirection:"row",
+    marginTop:-60,
     
 
  
@@ -134,5 +142,33 @@ const styles=StyleSheet.create({
     margin:45,
     maxHeight:30,
     maxWidth:30,
+    marginBottom:55,
+  },
+  bottomImagePlus:{
+    margin:45,
+    maxHeight:40,
+    maxWidth:40,
+    marginBottom:55,
+  },
+  imageConatiner:{
+    flex: 1,
+    alignItems:'center',
+    justifyContent:'center',  
+    flexDirection:"row",
+    marginTop:50,
+    marginBottom:25,
+
+  },
+  homeImage:{
+    maxHeight:100,
+    maxWidth:150,
+    marginLeft:170
+  },
+  profileIcon:{
+    margin:50,
+    maxHeight:30,
+    maxWidth:30,
+    marginLeft:120
+
   },
 })

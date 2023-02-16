@@ -20,9 +20,14 @@ import AsyncStorage from '@react-native-async-storage/async-storage';
 
 import GetStarted from './screens/OnBoadingUi/GetStarted';
 
-
+const theme={
+  colors:{
+    background:'#FFFFFF',
+  }
+}
 
 const App=()=> {
+  
   const Stack=createNativeStackNavigator();
 
 
@@ -105,7 +110,7 @@ const App=()=> {
       <Stack.Screen options={{headerShown:false}} name="DonationListings" component={DonationListings} />
       <Stack.Screen options={{headerShown:false}} name="RequestListings" component={RequestListings} />
       <Stack.Screen options={{headerShown:false}} name="DiscountListings" component={DiscountListings} />
-      <Stack.Screen options={{headerShown:true}} name="CreateListing" component={CreateListing} />
+      <Stack.Screen options={{headerShown:false}} name="CreateListing" component={CreateListing} />
       <Stack.Screen options={{headerShown:false}} name="Card" component={Card} />
       <Stack.Screen options={{headerShown:false}} name="UserProfile" component={UserProfile} />
       <Stack.Screen options={{headerShown:false}} name="UserListings" component={UserListings} />
@@ -118,7 +123,7 @@ const App=()=> {
 
 export default()=>{
   return(
-    <NavigationContainer >
+    <NavigationContainer theme={theme} >
       <App />
     </NavigationContainer>
   )

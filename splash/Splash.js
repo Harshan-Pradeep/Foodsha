@@ -19,7 +19,7 @@ const Splash=()=>{
 
     return(
             <View style={{flex:1,justifyContent:'center',alignItems:'center',backgroundColor:'#fff'}}>
-                <Image style={styles.default} source={require('../sources/images/logo.jpg')}  />
+                <Image style={styles.default} source={require('../sources/images/logo.png')}  />
             </View>    
 
     );

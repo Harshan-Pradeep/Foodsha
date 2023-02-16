@@ -64,18 +64,22 @@ const UserListings=()=>{
         
 
         <ScrollView nestedScrollEnabled={true} style={{flex: 1, paddingBottom: 620}}>
+          <View style={styles.imageConatiner}>
+            <Image style={styles.homeImage} source={require('../sources/images/1.png')} />
+            <TouchableOpacity onPress={()=>{navigation.navigate('UserProfile')}}><Image style={styles.profileIcon} source={require('../sources/images/profile.png')}/></TouchableOpacity>
+          </View>
             <View style={styles.componentContainer}>
                 <View style={{flex:1, marginTop:100}}>
                   <ScrollView horizontal={true}>
                     <View>
                       <FlatList
                             data={foodItems}
-                            numColumns={1 }
+                            numColumns={2}
                             renderItem={({item})=>(
                             <View >
                                 <Pressable >
                                     <CardComponents title={ item.Title} price={item.Price} category={item.Category} image={item.imageFile} />
-                                    <TouchableOpacity><Text onPress={()=>deleteFoodItem(item)} >Delete</Text></TouchableOpacity>
+                                    <TouchableOpacity><Text onPress={()=>deleteFoodItem(item)} style={styles.deleteButton}>Delete</Text></TouchableOpacity>
                                 </Pressable>
                                 
                             </View>                 
@@ -88,6 +92,11 @@ const UserListings=()=>{
                 </View>  
             </View>
         </ScrollView>
+        <View style={styles.bottomNavigation}>
+          <TouchableOpacity onPress={()=>{navigation.navigate('CommonListing')}}  ><Image style={styles.bottomImage} source={require('../sources/images/home.png')}/></TouchableOpacity>
+          <TouchableOpacity onPress={()=>{navigation.navigate("CreateListing")}}><Image style={styles.bottomImagePlus} source={require('../sources/images/CreateListing.png')}/></TouchableOpacity>
+          <TouchableOpacity onPress={()=>{navigation.navigate('UserListings')}}><Image style={styles.bottomImage} source={require('../sources/images/listing.png')}/></TouchableOpacity>   
+        </View>
         
     </SafeAreaView>
     )
@@ -125,7 +134,7 @@ const styles=StyleSheet.create({
   componentContainer:{
     alignItems:'center',
     justifyContent:'center',  
-    marginTop:-80,
+    marginTop:-350,
     marginLeft:6,
 
   },
@@ -143,5 +152,58 @@ const styles=StyleSheet.create({
     margin:45,
     maxHeight:30,
     maxWidth:30,
+  },
+  imageConatiner:{
+    flex: 1,
+    alignItems:'center',
+    justifyContent:'center',  
+    flexDirection:"row",
+    marginTop:-220,
+    marginBottom:5,
+
+  },
+  homeImage:{
+    maxHeight:100,
+    maxWidth:150,
+    marginLeft:50
+  },
+  profileIcon:{
+    margin:50,
+    maxHeight:30,
+    maxWidth:30,
+    marginLeft:120
+
+  },
+  deleteButton:{
+    backgroundColor:'#fe0000',
+    width:80,
+    height:25,
+    textAlign:"center",
+    color:'#FFF',
+    borderRadius:25,
+    marginLeft:48,
+    
+
+  },
+  bottomNavigation:{
+    backgroundColor:'#fe0000',
+    height:60,
+    alignItems:"center",
+    justifyContent:"center",
+    flexDirection:"row",
+    marginTop:80,
+    
+
+ 
+  },
+  bottomImage:{
+    margin:45,
+    maxHeight:30,
+    maxWidth:30,
+  },
+  bottomImagePlus:{
+    margin:45,
+    maxHeight:40,
+    maxWidth:40,
   },
 })

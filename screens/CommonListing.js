@@ -23,7 +23,7 @@ const CommonListing=()=>{
         querySnapshot=>{
           const foodItems=[]
           querySnapshot.forEach((doc)=>{
-            const {imageFile, Category, Price, Title, Description} = doc.data()
+            const {imageFile, Category, Price, Title, Description, Address , Contact} = doc.data()
             foodItems.push({
               id:doc.id,
               imageFile,
@@ -31,6 +31,8 @@ const CommonListing=()=>{
               Price,
               Title,
               Description,
+              Address,
+              Contact,
             })
           })
           setFoodItems(foodItems);
@@ -45,7 +47,12 @@ const CommonListing=()=>{
     return(
       
         <SafeAreaView>
+        <View style={styles.imageConatiner}>
+          <Image style={styles.homeImage} source={require('../sources/images/1.png')} />
+          <TouchableOpacity onPress={()=>{navigation.navigate('UserProfile')}}><Image style={styles.profileIcon} source={require('../sources/images/profile.png')}/></TouchableOpacity>
+        </View>
           <View style={styles.container} >
+            
                     <TouchableOpacity style={styles.homeButton} onPress={()=>{navigation.navigate('DonationListings')}}><Text style={styles.buttonText}  >Donation </Text></TouchableOpacity>
                     <TouchableOpacity style={styles.homeButton} onPress={()=>{navigation.navigate('RequestListings')}}><Text style={styles.buttonText}  >Request </Text></TouchableOpacity>
                     <TouchableOpacity style={styles.homeButton} onPress={()=>{navigation.navigate('DiscountListings')}}><Text style={styles.buttonText}  >Discount </Text></TouchableOpacity>
@@ -56,13 +63,13 @@ const CommonListing=()=>{
 
                 <View style={styles.componentContainer}>
                     <View style={{flex:1, marginTop:100}}>
-                      <ScrollView horizontal={true}>
+                      <ScrollView horizontal={true} style={{paddingBottom: 80}}>
                         <FlatList
                               data={foodItems}
                               numColumns={2}
                               renderItem={({item})=>(
                               <View >
-                                  <Pressable onPress={()=>{navigation.navigate('Card',{paramTitle:item.Title, paramPrice:item.Price, paramImg:item.imageFile, paramCategory:item.Category, paramDetail:item.Description})}}>
+                                  <Pressable onPress={()=>{navigation.navigate('Card',{paramTitle:item.Title, paramPrice:item.Price, paramImg:item.imageFile, paramCategory:item.Category, paramDetail:item.Description, paramContact:item.Contact, paramAddress:item.Address})}}>
                                       <CardComponents title={ item.Title} price={item.Price} category={item.Category} image={item.imageFile} />
                                   </Pressable>
                                   
@@ -76,8 +83,8 @@ const CommonListing=()=>{
             </ScrollView>
             <View style={styles.bottomNavigation}>
               <TouchableOpacity onPress={()=>{navigation.navigate('CommonListing')}}  ><Image style={styles.bottomImage} source={require('../sources/images/home.png')}/></TouchableOpacity>
-              <TouchableOpacity onPress={()=>{navigation.navigate("CreateListing")}}><Image style={styles.bottomImagePlus} source={require('../sources/images/listing.png')}/></TouchableOpacity>
-              <TouchableOpacity onPress={()=>{navigation.navigate('UserProfile')}}><Image style={styles.bottomImage} source={require('../sources/images/profile.png')}/></TouchableOpacity>
+              <TouchableOpacity onPress={()=>{navigation.navigate("CreateListing")}}><Image style={styles.bottomImagePlus} source={require('../sources/images/CreateListing.png')}/></TouchableOpacity>
+              <TouchableOpacity onPress={()=>{navigation.navigate('UserListings')}}><Image style={styles.bottomImage} source={require('../sources/images/listing.png')}/></TouchableOpacity>
               
             </View>
 
@@ -100,13 +107,14 @@ const styles=StyleSheet.create({
         
       },
       homeButton:{
-        backgroundColor:'#00909E',
-        borderRadius:5,
+        backgroundColor:'#fe0000',
+        borderRadius:25,
         width:103,
         height:35,
         margin:5,
         justifyContent:"center",
-        marginTop:40,
+        marginTop:20,
+        marginBottom:25,
 
 
       },
@@ -125,12 +133,12 @@ const styles=StyleSheet.create({
 
       },
       bottomNavigation:{
-        backgroundColor:'#00909E',
+        backgroundColor:'#fe0000',
         height:60,
         alignItems:"center",
         justifyContent:"center",
         flexDirection:"row",
-        marginTop:10,
+        marginTop:-60,
         
 
      
@@ -139,10 +147,33 @@ const styles=StyleSheet.create({
         margin:45,
         maxHeight:30,
         maxWidth:30,
+        marginBottom:55,
       },
       bottomImagePlus:{
         margin:45,
         maxHeight:40,
         maxWidth:40,
+        marginBottom:55,
+      },
+      imageConatiner:{
+        flex: 1,
+        alignItems:'center',
+        justifyContent:'center',  
+        flexDirection:"row",
+        marginTop:50,
+        marginBottom:25,
+
+      },
+      homeImage:{
+        maxHeight:100,
+        maxWidth:150,
+        marginLeft:170
+      },
+      profileIcon:{
+        margin:50,
+        maxHeight:30,
+        maxWidth:30,
+        marginLeft:120
+
       },
 })
