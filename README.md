@@ -1,8 +1,8 @@
 # Foodsha
 
-![This is an image](/assets/Screenshots/FOODSHA [Recovered]-01.png)
+![This is an image](/assets/Screenshots/logo.png)
 
-The project aims to tackle the issue of food waste, which is a significant problem in Sri Lanka. According to officials from the Waste Management Authority, an estimated 500 metric tons of food are discarded daily in the Western Province alone.And also the current food waste problem is causing a significant negative impact on our environment and economy. 
+The project FoodSha aims to tackle the issue of food waste, which is a significant problem in Sri Lanka. According to officials from the Waste Management Authority, an estimated 500 metric tons of food are discarded daily in the Western Province alone.And also the current food waste problem is causing a significant negative impact on our environment and economy. 
 
 It's ironic that despite this, both food waste and hunger are increasing. This suggests that the issue isn't a lack of food but a lack of a way to connect the extra food with those who need it. To address this, we came up with a solution in the form of a mobile application that allows individuals, shops, and restaurants to donate, share, or sell their surplus food or leftovers at reduced prices. This will help feed those in need while reducing food waste. Using FoodSha, people can find nearby free or discounted food listings and collect them. 
 
@@ -17,9 +17,9 @@ suppliers and access excess food.
 
 ## App screenshots
 
-![This is an image](/assets/Screenshots/Screenshot 2023-03-05 191253.png)
+![This is an image](/assets/Screenshots/login.jpg)
 
-![This is an image](/assets/Screenshots/Screenshot 2023-03-05 191253.png)
+![This is an image](/assets/Screenshots/register.jpg)
 
-![This is an image](/assets/Screenshots/WhatsApp Image 2023-02-17 at 01.19.44.JPG)
-![This is an image](/assets/Screenshots/WhatsApp Image 2023-02-17 at 01.19.47.JPG)
+![This is an image](/assets/Screenshots/home.png)
+
